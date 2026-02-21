@@ -1076,4 +1076,345 @@
         <div class="submenu-container" id="submenuContainer">
             <div class="submenu-header">
                 <div>
-   
+                       <h3 class="submenu-title" id="submenuTitle">OSINT TOOLS</h3>
+                    <div class="submenu-subtitle" id="submenuSubtitle">Select your investigation tool</div>
+                </div>
+                <button class="submenu-close" id="submenuClose">&times;</button>
+            </div>
+            <div class="submenu-grid" id="submenuGrid">
+                <!-- Submenu items akan diisi oleh JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <svg id="menuBtn" class="header-icon" width="24" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="15" y2="12"></line> 
+            <line x1="3" y1="18" x2="18" y2="18"></line>
+        </svg>
+        <div class="brand-title">Zuxxa CORE</div>
+    </header>
+
+    <main>
+        <!-- DASHBOARD PAGE -->
+        <div id="dashboard-page" class="page active">
+            <!-- HERO CARD -->
+            <div class="hero-card">
+                <div class="hero-header">
+                    <div class="icon-box-glass">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="currentColor" stroke="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard"><rect width="8" height="10" x="4" y="3" rx="0"/><rect width="8" height="6" x="14" y="3" rx="0"/><rect width="8" height="10" x="14" y="11" rx="0"/><rect width="8" height="6" x="4" y="15" rx="0"/></svg>
+                    </div>
+                    <div>
+                        <div class="welcome-text">Welcome back</div>
+                        <div class="dashboard-title">Zuxxa Core - SiX</div>
+                    </div>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-box">
+                        <div class="stat-box-label">Online Users</div>
+                        <div class="stat-box-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113Z"/></svg>
+                            <div class="stat-box-value" id="online-users">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-box-label">Active Senders</div>
+                        <div class="stat-box-content">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>
+                            <div class="stat-box-value" id="active-senders">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LATEST NEWS -->
+            <div class="section-title">Latest News</div>
+            
+            <div class="carousel-container">
+                <!-- Card 1 -->
+                <div class="carousel-card">
+                    <img src="https://files.catbox.moe/pzuyoo.jpg" alt="News 1" class="news-img" onerror="this.src='https://placehold.co/400x225/1a0b2e/FFF?text=News+1'">
+                    <div class="news-overlay">
+                        <div class="news-headline">🔥Zuxxa Core Update</div>
+                        <div class="news-tag">Contact @ZuxxaIsHere</div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="carousel-card">
+                    <img src="https://files.catbox.moe/sw0xod.jpg" alt="News 2" class="news-img" onerror="this.src='https://placehold.co/400x225/1a0b2e/FFF?text=News+2'">
+                    <div class="news-overlay">
+                        <div class="news-headline">New Features Added</div>
+                        <div class="news-tag">System Upgrade v6.0</div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="carousel-card">
+                    <img src="https://files.catbox.moe/4nei8z.jpeg" alt="News 3" class="news-img" onerror="this.src='https://placehold.co/400x225/1a0b2e/FFF?text=News+3'">
+                    <div class="news-overlay">
+                        <div class="news-headline">Maintenance Scheduled</div>
+                        <div class="news-tag">Check Tools Menu</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACCOUNT STATISTICS -->
+            <div class="section-title">Account Statistics</div>
+            
+            <div class="stats-grid">
+                <div class="info-card">
+                    <div class="card-icon icon-user">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div class="info-content">
+                        <label>Username</label>
+                        <p class="txt-pink" id="stat-username">Loading...</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="card-icon icon-role">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="m438-338 226-226-57-57-169 169-84-84-57 57 141 141Zm42 258q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Z"/></svg>
+                    </div>
+                    <div class="info-content">
+                        <label>Role</label>
+                        <p class="txt-red" id="stat-role">Loading...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card" style="margin-bottom: 30px;">
+                <div class="card-icon icon-date">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Z"/></svg>
+                </div>
+                <div class="info-content">
+                    <label>Account Expires</label>
+                    <p class="txt-orange" id="stat-expired">Loading...</p>
+                </div>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <div class="section-title">Quick Actions</div>
+            <div class="stats-grid">
+                <div class="action-card" id="my-senders-btn">
+                    <div class="card-icon icon-seller" style="width:50px; height:50px; font-size:24px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="currentColor"><path d="M280-200h80v-80h-80v80Zm0-160h80v-160h-80v160Zm160 160h80v-160h-80v160Zm0-240h80v-80h-80v80Zm160 240h80v-80h-80v80Zm0-160h80v-160h-80v160ZM240-80q-33 0-56.5-23.5T160-160v-480l240-240h320q33 0 56.5 23.5T800-800v640q0 33-23.5 56.5T720-80H240Z"/></svg>
+                    </div>
+                    <span class="action-label">My Senders</span>
+                </div>
+                <div class="action-card" id="developer-btn">
+                    <div class="card-icon icon-admin" style="width:50px; height:50px; font-size:24px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 -960 960 960" width="28px" fill="currentColor"><path d="M240-360h96q19 0 32.5-13.5T382-406v-148q0-19-13.5-32.5T336-600h-96v240Zm46-46v-148h50v148h-50Zm149 46h98v-46h-82v-52h52v-46h-52v-50h82v-46h-98q-13 0-21.5 8.5T405-570v180q0 13 8.5 21.5T435-360Zm206-1q13 0 22.5-8.5T676-391l56-209h-48l-43 164-43-164h-48l56 209q3 13 12.5 21.5T641-361ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z"/></svg>
+                    </div>
+                    <span class="action-label">Developer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOOLS PAGE (ENHANCED) -->
+        <div id="tools-page" class="page">
+            <div class="tools-header">
+                <div class="tools-title-group">
+                    <div class="tools-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="34px" viewBox="0 -960 960 960" width="34px" fill="#FFFFFF"><path d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q97-30 162-118.5T718-480H480v-315l-240 90v207q0 7 2 18h238v316Z"/></svg>
+                    </div>
+                    <div class="tools-text">
+                        <h2>TOOLS SUITE</h2>
+                        <p>Advanced Security Tools</p>
+                    </div>
+                </div>
+                <div class="owner-badge" id="tools-badge">LOADING</div>
+            </div>
+
+            <div class="tools-grid">
+                <!-- Downloader -->
+                <div class="tool-card downloader-card" data-tool="downloader">
+                    <div class="tool-icon-circle">
+                        <svg xmlns="http://www.w3.org2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-name">Downloader</div>
+                        <div class="tool-desc">Social Media</div>
+                    </div>
+                </div>
+
+                <!-- Network -->
+                <div class="tool-card network-card" data-tool="network">
+                    <div class="tool-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                        </svg>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-name">Social Media</div>
+                        <div class="tool-desc">Other Tools</div>
+                    </div>
+                </div>
+
+                <!-- OSINT -->
+                <div class="tool-card osint-card" data-tool="osint">
+                    <div class="tool-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-name">OSINT</div>
+                        <div class="tool-desc">Investigation</div>
+                    </div>
+                </div>
+
+                <!-- Spam Attack -->
+                <div class="tool-card spam-card" data-tool="spam">
+                    <div class="tool-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-name">Spam Attack</div>
+                        <div class="tool-desc">Bulk Messaging</div>
+                    </div>
+                </div>
+
+                <!-- Video Stream -->
+                <div class="tool-card video-card" data-tool="video">
+                    <div class="tool-icon-circle">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                        </svg>
+                    </div>
+                    <div class="tool-content">
+                        <div class="tool-name">Video Stream</div>
+                        <div class="tool-desc">Live Streaming</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- EXECUTION PAGE -->
+        <div id="execution-page" class="page">
+            <div class="placeholder-page">
+                <div class="placeholder-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="currentColor">
+                        <path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z"/>
+                    </svg>
+                </div>
+                <div class="placeholder-title">Execution Panel</div>
+                <div class="placeholder-text">Command execution and automation tools will be available here soon.</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navbar -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="dashboard">
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+            <span class="nav-text">Home</span>
+        </button>
+        <button class="nav-item" id="whatsapp-nav">
+            <svg width="22" height="22" viewBox="0 -960 960 960" fill="currentColor" transform="matrix(-1,0,0,1,0,0)">
+                <path d="M240-400h480v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM880-80 720-240H160q-33 0-56.5-23.5T80-320v-480q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v720ZM160-320h594l46 45v-525H160v480Zm0 0v-480 480Z"></path>
+            </svg>
+            <span class="nav-text">WhatsApp</span>
+        </button>
+        <button class="nav-item" data-page="tools">
+            <svg xmlns="http://www.w3.org/2000/svg" height="22" width="22" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"></path>
+            </svg>
+            <span class="nav-text">Tools</span>
+        </button>
+        <button class="nav-item" id="anime-nav">
+            <svg width="22" height="22" viewBox="0 -960 960 960" fill="currentColor">
+                <path d="m160-800 80 160h120l-80-160h80l80 160h120l-80-160h80l80 160h120l-80-160h120q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800Zm0 240v320h640v-320H160Zm0 0v320-320Z"/>
+                <path d="M380-320 l-25-60 -60-25 60-25 25-60 25 60 60 25 -60 25 -25 60Z"/>
+                <path d="M580-480 l-15-35 -35-15 35-15 15-35 15 35 35 15 -35 15 -15 35Z"/>
+            </svg>
+            <span class="nav-text">Anime</span>
+        </button>
+    </nav>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const container = document.getElementById('particle-container');
+        const particleCount = 35; 
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 3 + 2; 
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.top = `${Math.random() * 100}vh`;
+            
+            const duration = Math.random() * 15 + 10;
+            particle.style.animationDuration = `${duration}s`;
+            
+            particle.style.animationDelay = `-${Math.random() * 20}s`;
+
+            container.appendChild(particle);
+        }
+
+        let currentUserRole = 'user';
+
+        window.confirmLogout = function() {
+            return confirm('Apakah Anda yakin ingin logout?');
+        };
+
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                console.log('Page loaded from cache, refreshing...');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 100);
+            }
+        });
+
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+
+        async function fetchUserData() {
+            try {
+                const response = await fetch('/api/option-data');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user data');
+                }
+                const userData = await response.json();
+                
+                console.log('User data fetched:', userData);
+                
+                currentUserRole = userData.role || 'user';
+                
+                const sidebarUsername = document.getElementById('sidebar-username');
+                const sidebarRole = document.getElementById('sidebar-role');
+                
+                if (sidebarUsername) sidebarUsername.textContent = userData.username || 'Guest';
+                if (sidebarRole) sidebarRole.textContent = `ID: #${userData.username || '000'} • ${currentUserRole.toUpperCase()}`;
+                
+                const statUsername = document.getElementById('stat-username');
+                const statRole = document.getElementById('stat-role');
+                const statExpired = document.getElementById('stat-expired');
+                const activeSenders = document.getElementById('active-senders');
+                const toolsBadge = document.getElementById('tools-badge');
+                
+                if (statUsername) statUsername.textContent = userData.username || 'Guest';
+                if (statRole) statRole.textContent = currentUserRole.toUpperCase();
+                if (statExpired) {
+                    if (userData.expired === 'Permanent' || userData.daysRemaining === 99999) {
+            
