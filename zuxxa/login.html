@@ -763,4 +763,523 @@
         .video-display-box {
             height: 70px;
         }
-  
+        
+        .button-group {
+            margin-top: 0;
+        }
+        
+        .action-btn {
+            padding: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer-widget {
+            padding: 12px;
+        }
+    }
+
+    /* --- BACKGROUND OVERLAY --- */
+    .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 50% 0%, rgba(26, 11, 46, 0.8) 0%, rgba(8, 3, 16, 0.9) 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* --- AUTO LOGIN OVERLAY --- */
+    .auto-login-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(8, 3, 16, 0.95);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 3000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .auto-login-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .auto-login-spinner {
+        width: 60px;
+        height: 60px;
+        border: 3px solid rgba(219, 39, 119, 0.2);
+        border-radius: 50%;
+        border-top-color: var(--accent-pink);
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 25px;
+        box-shadow: 0 0 20px rgba(219, 39, 119, 0.3);
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+    
+    .auto-login-text {
+        font-family: var(--font-title);
+        color: var(--accent-cyan);
+        font-size: 1rem;
+        letter-spacing: 3px;
+        text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+    }
+</style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="https://files.catbox.moe/hy1swu.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="particle-container"></div>
+
+    <!-- AUTO LOGIN OVERLAY -->
+    <div class="auto-login-overlay" id="autoLoginOverlay">
+        <div class="auto-login-spinner"></div>
+        <div class="auto-login-text">Checking session...</div>
+    </div>
+
+    <!-- DEVICE CONFLICT MODAL -->
+    <div class="device-conflict-modal" id="deviceConflictModal">
+        <div class="device-modal-content">
+            <div class="device-icon-container">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>⚠️ DEVICE CONFLICT</h3>
+            <p>Akun Anda sedang aktif di device lain. Hanya 1 device yang diperbolehkan.</p>
+            <div class="device-actions">
+                <button class="device-btn btn-logout-others" onclick="logoutOtherDevice()">
+                    Logout Device Lain
+                </button>
+                <button class="device-btn btn-logout-current" onclick="closeDeviceModal()">
+                    Batalkan Login
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainCard" class="container-card">
+        
+        <div class="glow-orb orb-top"></div>
+        <div class="glow-orb orb-bottom"></div>
+
+        <!-- NOTIFICATION COMPONENT -->
+        <div id="notification-box">
+            <i class="fas fa-exclamation-triangle notif-icon" id="notif-icon"></i>
+            <div class="notif-text">
+                <h4 id="notif-title">ERROR</h4>
+                <p id="notif-msg">Details here...</p>
+            </div>
+        </div>
+
+        <!-- === VIEW HOME === -->
+        <div class="view-section view-home">
+            <div class="profile-section">
+                <div class="profile-img-box">
+                    <img src="https://files.catbox.moe/l7k8xe.jpg" alt="User" class="profile-img"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Indictive&background=db2777&color=fff'">
+                    <div class="status-dot"></div>
+                </div>
+                <h1 class="brand-title">Zuxxa CORE</h1>
+                <p class="brand-sub">SYSTEM ACCESS GATEWAY</p>
+            </div>
+
+            <div class="video-wrapper">
+                <div class="video-display-box">
+                    <div class="monitor-overlay"></div>
+                    <video class="video-content" autoplay loop muted playsinline>
+                        <source src="https://files.catbox.moe/2nn50b.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <div onclick="showLoginView()" class="action-btn">
+                    <div class="btn-icon-sq">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <div class="btn-content">
+                        <span class="btn-title">Login System</span>
+                        <span class="btn-desc">Verify Credentials</span>
+                    </div>
+                    <i class="fas fa-chevron-right" style="color: var(--accent-pink); opacity: 0.5;"></i>
+                </div>
+
+                <a href="https://t.me/ZuxxaIsHere" target="_blank" class="action-btn">
+                    <div class="btn-icon-sq">
+                        <i class="fab fa-telegram-plane"></i>
+                    </div>
+                    <div class="btn-content">
+                        <span class="btn-title">Get Access Key</span>
+                        <span class="btn-desc">Request Access</span>
+                    </div>
+                    <i class="fas fa-external-link-alt" style="color: var(--accent-pink); opacity: 0.5;"></i>
+                </a>
+            </div>
+            
+            <div class="footer-widget">
+                <div class="digital-clock" id="clock">00:00</div>
+                <div class="date-display" id="dateText">SYSTEM READY</div>
+                <div class="visualizer">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === VIEW LOGIN === -->
+        <div class="view-section view-login">
+            
+            <button onclick="showHomeView()" class="back-link">
+                <i class="fas fa-arrow-left"></i> RETURN TO BASE
+            </button>
+
+            <div style="margin-bottom: 2rem;">
+                <h2 style="font-family: var(--font-title); font-size: 1.8rem; color: white;">AUTHENTICATION</h2>
+                <div style="height: 3px; width: 40px; background: var(--accent-pink); margin-top: 5px; border-radius: 2px;"></div>
+                <p style="color: var(--text-gray); margin-top: 10px; font-size: 0.9rem; font-family: var(--font-code);">Enter credentials to unlock core.</p>
+            </div>
+
+            <form id="loginForm">
+                
+                <div class="input-box" id="userBox">
+                    <label class="lbl">USERNAME ID</label>
+                    <input type="text" id="userInput" class="inp" placeholder="Ex: AiiGantenk" autocomplete="username" required>
+                    <i class="fas fa-user-astronaut inp-icon"></i>
+                </div>
+
+                <div class="input-box" id="passBox">
+                    <label class="lbl">SECURITY KEY</label>
+                    <input type="password" id="passInput" class="inp" placeholder="••••••••" autocomplete="current-password" required>
+                    <i class="fas fa-key inp-icon"></i>
+                </div>
+
+                <!-- AUTO LOGIN -->
+                <div class="auto-login-wrapper" onclick="toggleAuto()">
+                    <div id="checkAuto" class="checkbox-custom"></div>
+                    <span class="auto-text">REMEMBER ME (30 DAYS)</span>
+                </div>
+
+                <!-- Login button -->
+                <button type="submit" class="submit-btn" id="loginBtn">
+                    INITIALIZE <i class="fas fa-power-off" style="margin-left: 8px;"></i>
+                </button>
+
+            </form>
+            
+            <div style="margin-top: auto; text-align: center; font-size: 0.75rem; color: var(--text-gray); font-family: var(--font-code);">
+                ENCRYPTED CONNECTION V.6.0 <span style="color: var(--accent-cyan);">●</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Global variables
+        const card = document.getElementById('mainCard');
+        const checkAuto = document.getElementById('checkAuto');
+        const bgMusic = document.getElementById('bgMusic');
+        const autoLoginOverlay = document.getElementById('autoLoginOverlay');
+        const deviceConflictModal = document.getElementById('deviceConflictModal');
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        
+        let isAuto = false;
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Setup particles
+            setupParticles();
+            
+            // Auto-start background music on first interaction
+            setupAudio();
+            
+            // Check URL for messages (from backend redirects)
+            checkUrlMessages();
+            
+            // Setup form submission
+            setupForm();
+            
+            // Auto login check
+            await checkAutoLogin();
+            
+            // Setup clock
+            updateClock();
+            setInterval(updateClock, 1500);
+        });
+
+        // --- PARTICLE SYSTEM ---
+        function setupParticles() {
+            const container = document.getElementById('particle-container');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 3 + 2; 
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                particle.style.animationDelay = `-${Math.random() * 20}s`;
+                container.appendChild(particle);
+            }
+        }
+
+        // --- AUDIO HANDLING ---
+        function setupAudio() {
+            bgMusic.volume = 0.5;
+            document.body.addEventListener('click', function() {
+                if(bgMusic.paused) {
+                    bgMusic.play().catch(() => {});
+                }
+            }, { once: true });
+        }
+
+        // --- FORM SETUP ---
+        function setupForm() {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                validateAndLogin();
+            });
+        }
+
+        // --- AUTO LOGIN FUNCTION ---
+        async function checkAutoLogin() {
+            autoLoginOverlay.classList.add('active');
+            
+            try {
+                const savedUsername = localStorage.getItem('indictive_username');
+                const savedPassword = localStorage.getItem('indictive_password');
+                
+                if (savedUsername && savedPassword) {
+                    const formData = new URLSearchParams();
+                    formData.append('username', savedUsername);
+                    formData.append('key', savedPassword);
+                    formData.append('remember', 'true');
+                    
+                    const response = await fetch('/auth', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (response.redirected && response.url.includes('/dashboard')) {
+                        showNotification("WELCOME BACK", "Auto-login successful", "success");
+                        setTimeout(() => {
+                            window.location.href = '/dashboard';
+                        }, 1000);
+                        return;
+                    }
+                }
+                
+                setTimeout(() => {
+                    autoLoginOverlay.classList.remove('active');
+                }, 500);
+                
+            } catch (error) {
+                autoLoginOverlay.classList.remove('active');
+            }
+        }
+
+        // --- URL MESSAGE HANDLER ---
+        function checkUrlMessages() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const message = urlParams.get('msg');
+            
+            if (message) {
+                const decodedMessage = decodeURIComponent(message);
+                
+                if (decodedMessage.includes("sudah login di device lain")) {
+                    showDeviceConflictModal(decodedMessage);
+                } else if (decodedMessage.includes("expired")) {
+                    showNotification("SESSION EXPIRED", decodedMessage, "warning");
+                } else if (decodedMessage.includes("tidak ditemukan")) {
+                    showNotification("USER NOT FOUND", decodedMessage, "error");
+                } else if (decodedMessage.includes("Key salah")) {
+                    showNotification("ACCESS DENIED", decodedMessage, "error");
+                } else {
+                    showNotification("SYSTEM MESSAGE", decodedMessage, "info");
+                }
+                
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        }
+
+        // --- DEVICE CONFLICT HANDLER ---
+        function showDeviceConflictModal(message) {
+            deviceConflictModal.classList.add('active');
+        }
+
+        function closeDeviceModal() {
+            deviceConflictModal.classList.remove('active');
+        }
+
+        async function logoutOtherDevice() {
+            try {
+                const username = document.getElementById('userInput').value;
+                const password = document.getElementById('passInput').value;
+                
+                if (!username || !password) {
+                    showNotification("ERROR", "Please enter username and password first", "error");
+                    return;
+                }
+                
+                const response = await fetch('/api/logout-other-device', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: username, password: password })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification("SUCCESS", "Other device logged out. Please login again.", "success");
+                    setTimeout(() => {
+                        deviceConflictModal.classList.remove('active');
+                        performLogin(username, password);
+                    }, 1500);
+                } else {
+                    showNotification("ERROR", result.error || "Failed to logout other device", "error");
+                }
+                
+            } catch (error) {
+                showNotification("NETWORK ERROR", "Please try again", "error");
+                deviceConflictModal.classList.remove('active');
+            }
+        }
+
+        // --- UI CONTROLS ---
+        function showLoginView() {
+            card.classList.add('show-login');
+            setTimeout(() => document.getElementById('userInput').focus(), 300);
+        }
+
+        function showHomeView() {
+            card.classList.remove('show-login');
+        }
+
+        function toggleAuto() {
+            isAuto = !isAuto;
+            if (isAuto) {
+                checkAuto.classList.add('active');
+            } else {
+                checkAuto.classList.remove('active');
+            }
+        }
+
+        // --- NOTIFICATION SYSTEM ---
+        function showNotification(title, message, type = "info") {
+            const box = document.getElementById('notification-box');
+            const titleEl = document.getElementById('notif-title');
+            const msgEl = document.getElementById('notif-msg');
+            const iconEl = document.getElementById('notif-icon');
+            
+            box.className = ''; 
+            box.classList.add(type);
+            
+            switch(type) {
+                case 'success':
+                    iconEl.className = 'fas fa-check-circle notif-icon';
+                    break;
+                case 'error':
+                    iconEl.className = 'fas fa-exclamation-triangle notif-icon';
+                    break;
+                case 'warning':
+                    iconEl.className = 'fas fa-exclamation-circle notif-icon';
+                    break;
+                case 'info':
+                    iconEl.className = 'fas fa-info-circle notif-icon';
+                    break;
+            }
+            
+            titleEl.innerText = title;
+            msgEl.innerText = message;
+            
+            box.classList.add('active');
+            
+            setTimeout(() => {
+                box.classList.remove('active');
+            }, 4000);
+        }
+
+        // --- LOGIN VALIDATION ---
+        function validateAndLogin() {
+            const userInput = document.getElementById('userInput');
+            const passInput = document.getElementById('passInput');
+            const userBox = document.getElementById('userBox');
+            const passBox = document.getElementById('passBox');
+            
+            const username = userInput.value.trim();
+            const password = passInput.value.trim();
+            let isValid = true;
+
+            userInput.classList.remove('error-border');
+            passInput.classList.remove('error-border');
+            userBox.classList.remove('shake-error');
+            passBox.classList.remove('shake-error');
+            
+            void userBox.offsetWidth; 
+            void passBox.offsetWidth;
+
+            if (!username) {
+                userInput.classList.add('error-border');
+                userBox.classList.add('shake-error');
+                isValid = false;
+            }
+            if (!password) {
+                passInput.classList.add('error-border');
+                passBox.classList.add('shake-error');
+                isValid = false;
+            }
+
+            if (!isValid) {
+                showNotification("ACCESS DENIED", "Please fill in all required fields", "error");
+                return;
+            }
+
+            performLogin(username, password);
+        }
+
+        // --- PERFORM LOGIN ---
+        async function performLogin(username, password) {
+            const originalText = loginBtn.innerHTML;
+            
+            loginBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> VERIFYING...';
+            loginBtn.disabled = true;
+            
+            try {
+                if (isAuto) {
+                    localStorage.setItem('indictive_username', username);
+                    localStorage.setItem('indictive_password', password);
+                } else {
+                    localStorage.removeItem('indictive_username');
+                    localStorage.removeItem('indictive_password');
+                }
+                
+                const formData = new URLSearchParams();
+                formData.append('username', username);
+                formData.append('key', password);
+                formData.append('remember', isAuto.toString());
+                
+                const response = await fetch('/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData.toString()
+                });
+                
+                if (response.redirected) {
+                    if (response.url.includes('/dashboard')) {
+                        window.location.href = response.url;
+              
