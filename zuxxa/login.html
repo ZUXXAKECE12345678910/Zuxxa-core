@@ -1283,3 +1283,45 @@
                     if (response.url.includes('/dashboard')) {
                         window.location.href = response.url;
               
+                    } else if (response.url.includes('/login')) {
+                        const url = new URL(response.url);
+                        const errorMsg = url.searchParams.get('msg') || 'Login failed';
+                        showNotification("ACCESS DENIED", decodeURIComponent(errorMsg), "error");
+                        loginBtn.innerHTML = originalText;
+                        loginBtn.disabled = false;
+                    }
+                } else {
+                    showNotification("SYSTEM ERROR", "Unexpected response from server", "error");
+                    loginBtn.innerHTML = originalText;
+                    loginBtn.disabled = false;
+                }
+                
+            } catch (error) {
+                showNotification("NETWORK ERROR", "Cannot connect to server", "error");
+                loginBtn.innerHTML = originalText;
+                loginBtn.disabled = false;
+            }
+        }
+
+        // --- CLOCK FUNCTION ---
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const dayNames = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+            const monthNames = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
+            
+            document.getElementById('clock').innerText = `${hours}:${minutes}`;
+            document.getElementById('dateText').innerText = `${dayNames[now.getDay()]}, ${now.getDate()} ${monthNames[now.getMonth()]}`;
+        }
+
+        // --- ENTER KEY SUPPORT ---
+        document.getElementById('passInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                validateAndLogin();
+            }
+        });
+    </script>
+</body>
+</html>
